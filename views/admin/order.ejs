@@ -1,0 +1,92 @@
+<%- include('../partials/header') %>
+<!-- navbar like thing-->
+<div class="container-fluid d-flex flex-row justify-content-between">
+    <a href='/admin/orders'>Összes rendelés</a>
+    <% if(currentUser){ %>
+        <p>Bejelentkezve mint: <%= currentUser.email %></p>
+        <a href="/api/auth/logout">Kijelentkezés</a>
+    <% } %>
+</div>
+
+<div class="container my-1 bg-secondary rounded" id="saver" style="display:none;">
+    <div class="row p-2">
+        <div class="col-12 col-md-8 text-right text-white">
+            <h1>Menti a változtatásokat?</h1>
+        </div>
+        <div class="col-12 col-md-4 text-center align-middle">
+            <button type="button" class="btn btn-md btn-danger" id="cancel">Mégse</button>
+            <button type="button" class="btn btn-md btn-success" id="save">Mentés</button>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/messagebar') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h4 class="display-4">Azonosító: <span id="_id"></span></h4>
+            <h5 id="date"></h5>
+            <h5>Megrendelő: <span id="name"></span></h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 ">
+            <form class="">
+                <h5>Rendelés állapota:</h5>
+                <div class="form-group">
+                    <select class="form-control" name="status" id="status">
+                        <option value="Feldolgozás alatt">Feldolgozás alatt</option>
+                        <option value="Szállítás alatt">Szállítás alatt</option>
+                        <option value="Lezárva">Lezárva</option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="payment.done" id="done" value="true">
+                    <label class="form-check-label">
+                        Fizetve <span class="ml-5 font-weight-bold">Fizetési mód:</span> <span id="method"></span> <span id="shipping"></span>
+                    </label>
+                </div>
+                <h5 class="mt-5">Megrendelő adatai:</h5>
+                <div class="form-group">
+                    <label>Kapcsolattartó email:</label>
+                    <input class="form-control" type="email" name="details.email" id="email" placeholder="valaki@internet.com" value="">
+                </div>
+                <div class="form-group">
+                    <label>Telefonszám:</label>
+                    <input class="form-control" type="tel" name="details.phone" id="phone" pattern="[0-9]{2}-[0-9]{3}-[0-9]{4}" placeholder="telefonszám 11-222-3333" value="">
+                </div>
+                <h5>Szállítás:</h5>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="details.zipcode" id="zipcode" maxlength="4" placeholder="irányítószám">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="details.city" id="city" placeholder="település">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="details.address" id="address" placeholder="utca, házszám">
+                </div>
+                <div class="form-group">
+                    <textarea name="details.etc" id="etc" placeholder="egyéb (csengő, kutyák száma, riasztó kódja, stb...)" class="form-control"></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h5>Megrendelt termékek:</h5>
+            <p>Termékek ára: <span class="font-weight-bold" id="price"></span>Ft</p>
+            <ul class="list-group" id="products"></ul>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <button type="button" class="btn btn-lg btn-danger" id="delete">Rendelés törlése <img src="/img/icons/024-trash.svg" width="32px" height="auto"></button>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
+
+<script src="/api/js/orders.js" type="text/javascript"></script>

@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+<%- include('../partials/adminNavbar') %>
+<%- include('../partials/messagebar') %>
+
+<div class="container">
+    <div class="row">
+        <!-- simple list of orders -->
+        <div class="col-12">
+            <ul class="list-group">
+                <% messages.reverse().forEach((message, i) => { %>
+                    <li class="list-group-item ">
+                        <a href="/admin/messages/<%= message._id %>">
+                            <%- message.answer.done ? "<s>" : "" %>
+                            <%= message.name %>: <%= message.subject %> - <span class="dateDisplay"><%= message.date %></span>
+                            <%- message.answer.done ? "</s>" : "" %>
+                        </a>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

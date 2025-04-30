@@ -1,0 +1,8 @@
+<!-- navbar like thing-->
+<div class="container-fluid d-flex flex-row justify-content-between">
+    <a href='/admin'>Vissza</a>
+    <% if(currentUser){ %>
+        <p>Bejelentkezve mint: <%= currentUser.email %></p>
+        <a href="/api/auth/logout">Kijelentkezés</a>
+    <% } %>
+</div>

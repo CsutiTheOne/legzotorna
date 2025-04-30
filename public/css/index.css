@@ -1,0 +1,223 @@
+/* animations */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes upSlideFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(0, 30px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+@keyframes downSlideFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(0, -20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+@@keyframes disappear {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: .3
+        transform: scale(0.2);
+    }
+}
+/* general design */
+img.remove-cross {
+    transform: rotate(45deg);
+}
+.disappear {
+    transition: 0.4s;
+    opacity: 0.2;
+    transform: scale(0.2);
+}
+body {
+    min-height: 100vh;
+    background-color: #efefff;
+}
+
+/* ___FŐOLDAL___ */
+/* banner part */
+.banner {
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    color: #fafafa;
+}
+.banner #background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    background-color: #80a3db;
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.banner .banner-content {
+    padding-top: 50vh;
+    text-shadow: 1px 0px gray;
+    color: #43c6f9;
+
+}
+.banner .banner-content div {
+    margin: 0 auto;
+    padding: 10px;
+    opacity: 0;
+    animation-name: upSlideFadeIn;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+.banner .banner-content img {
+    /* basically the down arrow */
+    opacity: 0;
+    animation-name: downSlideFadeIn;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+/* Főoldal tartalma */
+#signature {
+    font-weight: bold;
+}
+.handwritten {
+    font-family: 'Homemade Apple', cursive;
+}
+.content {
+    margin-top: 100px;
+}
+.content #quote {
+    font-size: 2em;
+    font-family: Playball;
+}
+.content .intro {
+    margin-top: 30px;
+}
+.content .intro img {
+    margin-bottom: 25px;
+}
+.content .intro p {
+    color: #43c6f9;
+    font-family: Montserrat;
+    line-height: 1.7;
+    text-align: justify;
+    text-shadow: 1px 0px gray;
+    padding: 0 40px;
+}
+.content .intro p::first-letter {
+    padding-left: 7px;
+}
+.content .intro p:not(#signature) {
+    margin: 1vw 0;
+    line-height: 2.1;
+}
+.content .title {
+    line-height: 2.2;
+}
+.content .row.video {
+    margin: 50px 0;
+}
+.content .video-description {
+    color: #557;
+    font-size: 1em;
+    text-align: justify;
+}
+
+.content .description h5 {
+    font-family: Yantramanav;
+    color: #335;
+    font-weight: bold;
+    text-align: center;
+    font-size: 2em;
+}
+.content .description p,
+.content .description li {
+    color: #557;
+    font-size: 1em;
+    text-align: justify;
+}
+.content .description.wide p,
+.content .description.wide ul {
+    margin: 5px 10vw;
+}
+.content .description.wide p::first-letter {
+    padding-left: 7px;
+}
+
+
+/* Contact page */
+.contact-list {
+    list-style-type: none;
+}
+.contact-list p {
+    margin-left: 10px;
+    display: inline-block;
+    font-size: 0.9rem;
+}
+.contact-list p span {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* ___Webáruház___ */
+#cart {
+
+}
+#cart img {
+    cursor: pointer;
+}
+#cart span.badge {
+    transform: translate(-17px, -23px);
+}
+/* webáruház checkout */
+div.checkoutForm {
+    margin: 0 auto;
+    width: 50vw;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* footer */
+#footerbar {
+    font-size: 1.1rem;
+    margin-top: 60vh;
+    padding: 50px 0;
+    background: rgb(100, 100, 120);
+    color: white;
+}
+#footerbar .icon-list {
+    font-size: 0.8rem;
+}
+
+/* ___MÁSIK OLDAL___ */
+div.loginForm {
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* fontos oldal */
+.card img {
+    margin: 0 auto;
+}

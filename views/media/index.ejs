@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<%- include('../partials/messagebar') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center">
+                <h2 class="font-weight-bold">Vásárolt digitális terméket?</h2>
+                <p>A digitális termékek fájlként érhetőek el, miután megadja az email címét.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form class="" action="/media/query" method="POST">
+                <div class="form-group text-center w-50" style="margin:0 auto;">
+                    <input class="form-control" type="email" name="email" placeholder="email cím">
+                </div>
+                <div class="text-center mt-3">
+                    <input type="submit" class="btn btn-md btn-info" value="mutasd">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footerbar') %>
+<%- include('../partials/footer') %>

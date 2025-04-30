@@ -1,0 +1,88 @@
+<%- include('../partials/header') %>
+
+<a href="/vasarlas" class="m-3">Vissza</a>
+
+<%- include('../partials/messagebar') %>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12" id="checkoutCart">
+            <!-- here comes the cart -->
+            <h5 class="text-center">Kosár tartalma: </h5>
+            <div class="cart">
+                <ul class="list-group">
+
+                </ul>
+                <h6 class="text-right">Összesen: <span id="price"></span>Ft</h6>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12 checkoutForm">
+            <div class="checkoutForm">
+            <!--and here comes the form-->
+            <h5 class="text-left">A rendelés befejezéséhez adja meg adatait:</h5>
+            <form>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="details[name]" placeholder="teljes név">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="details[email]" placeholder="email cím valaki@internet.com">
+                </div>
+                <div class="form-group">
+                    +36-<input class="form-control" type="tel" name="details[phone]" placeholder="telefonszám 112223333">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="details[zipcode]" maxlength="4" placeholder="irányítószám">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="details[city]" placeholder="település">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="details[address]" placeholder="utca, házszám">
+                </div>
+                <div class="form-group">
+                    <textarea name="details[etc]" placeholder="megjegyzés (kapukód, emelet, ajtó, stb...)" class="form-control"></textarea>
+                </div>
+                <!-- <div class="form-group d-none">
+                    //depracated
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input name="payment[method]" value="Előre_utalás" type="radio">
+                            </div>
+                        </div>
+                        <label class="form-control">Előre utalás (szállítás: <%= config.eloreu_shipping %> Ft) <img src="/img/icons/018-bank-transfer.svg" height="32px" width="auto"></label>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input name="payment[method]" value="Utánvétel" type="radio">
+                            </div>
+                        </div>
+                        <label class="form-control" >Utánvétel (szállítás: <%= config.utanv_shipping %> Ft) <img src="/img/icons/019-inventory.svg" height="32px" width="auto"></label>
+                    </div>
+                    <div class="">
+                        <small>A szállítás ára csak tájékoztató jellegű. Ha olyan terméket vásárol, ami nem igényel kiszállítást, nem számolódik fel.</small>
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <input type="checkbox" name="accepted" value="true" required>
+                    <label for="accepted">Az <a href="/api/files/legzotorna_adatkezelesi-tajekoztato.html">Adatkezelési Tájékoztatót</a> elolvastam és elfogadom.</label>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-lg btn-primary">
+                        Megrendelem!
+                    </button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
+
+<script src="/js/shop.js" type="text/javascript"></script>
+<script type="text/javascript">
+</script>

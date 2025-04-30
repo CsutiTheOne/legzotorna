@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+<%- include('../partials/adminNavbar') %>
+<%- include('../partials/messagebar') %>
+
+
+<div class="container">
+    <div class="row">
+        <!-- simple list of orders -->
+        <div class="col-12">
+            <ul class="list-group">
+                <% orders.reverse().forEach((order, i) => { %>
+                    <li class="list-group-item ">
+                        <a href="/admin/orders/<%= order._id %>" class="d-flex flex-row justify-content-between">
+                            <span><%= order.details.name %></span>
+                            <span><%= order._id %></span>
+                            <span><%= order.status %></span>
+                        </a>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

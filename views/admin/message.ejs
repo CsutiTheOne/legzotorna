@@ -1,0 +1,45 @@
+<%- include('../partials/header') %>
+<!-- navbar like thing-->
+<div class="container-fluid d-flex flex-row justify-content-between">
+    <a href='/admin/messages'>Összes üzenet</a>
+    <% if(currentUser){ %>
+        <p>Bejelentkezve mint: <%= currentUser.email %></p>
+        <a href="/api/auth/logout">Kijelentkezés</a>
+    <% } %>
+</div>
+<%- include('../partials/messagebar') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="jumbotron">
+                <div class="d-flex flex-row justify-content-between">
+                    <h1 class="display-5 d-inline" id="subject"></h1>
+                    <button type="button" id="delete" class="btn btn-danger rounded-circle">
+                        <img src="/img/icons/024-trash.svg" width="auto" height="32px" alt="Törlés">
+                    </button>
+                </div>
+
+                <p class="display-5">Küldő: <span id="name"></span></p>
+                <p id="email"></p>
+                <hr class="my-3">
+                <small>Üzenet:</small>
+                <p id="message"></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group" id="answerForm" style="display:none;">
+                <textarea class="form-control" rows="10" placeholder="Ide írja majd a választ..."></textarea>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success btn-lg" id="send">válasz</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
+
+<script type="text/javascript" src="/api/js/message.js"></script>

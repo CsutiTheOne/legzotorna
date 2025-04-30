@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<%- include('../partials/messagebar') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h5>Fájlok</h5>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="col-12 list-group">
+            <% products.forEach(function(val, i){ %>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>
+                        <%= val.product.title %>
+                    </span>
+                    <span>
+                        <a href="<%= val.product.url %>">
+                            <img src="/img/icons/031-download.svg" width="32px" height="auto">
+                        </a>
+                    </span>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+
+<%- include('../partials/footerbar') %>
+<%- include('../partials/footer') %>

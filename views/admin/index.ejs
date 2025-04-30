@@ -1,0 +1,99 @@
+<%- include('../partials/header') %>
+<!-- navbar like thing-->
+<div class="container-fluid d-flex flex-row justify-content-between">
+    <a href='/fooldal'>Főoldal</a>
+    <% if(currentUser){ %>
+        <p>Bejelentkezve mint: <%= currentUser.email %></p>
+        <a href="/api/auth/logout">Kijelentkezés</a>
+    <% } %>
+</div>
+<!-- messagebar -->
+<%- include('../partials/messagebar') %>
+
+
+<%
+//RENDER THIS IF USER IS LOGGED IN
+if(currentUser){ %>
+
+    <div class="container">
+        <div class="row">
+            <!-- This card'll go to profile page -->
+            <div class="card">
+                <img src="/img/icons/013-user.svg" width="64px" height="64px" alt="Card image cap">
+                <div class="card-body">
+                    <a href="/admin/<%= currentUser._id %>" class="btn btn-primary">Profil</a>
+                </div>
+            </div>
+            <% if(currentUser.rights.canAnswer) { %>
+                <!-- This card'll go to users page -->
+                <div class="card">
+                    <img src="/img/icons/009-email.svg" height="64px" width="64px" alt="Card image cap">
+                    <div class="card-body">
+                        <a href="/admin/messages" class="btn btn-primary">Üzenetek</a>
+                    </div>
+                </div>
+            <% } if(currentUser.rights.canManageUsers) { %>
+                <!-- This card'll go to users page -->
+                <div class="card">
+                    <img src="/img/icons/012-group.svg" height="64px" width="64px" alt="Card image cap">
+                    <div class="card-body">
+                        <a href="/admin/users" class="btn btn-primary">Felhasználók</a>
+                    </div>
+                </div>
+            <% } if(currentUser.rights.canManageProducts) { %>
+                <!-- This card'll go to products page -->
+                <div class="card">
+                    <img src="/img/icons/015-box.svg" width="64px" height="64px" alt="Card image cap">
+                    <div class="card-body">
+                        <a href="/admin/products" class="btn btn-primary">Termékek</a>
+                    </div>
+                </div>
+            <% } if(currentUser.rights.canManageOrders) { %>
+                <!-- This card'll go to products page -->
+                <div class="card">
+                    <img src="/img/icons/014-shopping-cart.svg" width="64px" height="64px" alt="Card image cap">
+                    <div class="card-body">
+                        <a href="/admin/orders" class="btn btn-primary">Rendelések</a>
+                    </div>
+                </div>
+            <% } if(currentUser.rights.canManageFiles) { %>
+                <!-- This card'll go to config page -->
+                <div class="card">
+                    <img src="/img/icons/030-folder.svg" width="64px" height="64px" alt="Card image cap">
+                    <div class="card-body">
+                        <a href="/admin/files" class="btn btn-primary">Fájlok</a>
+                    </div>
+                </div>
+            <% } if(currentUser.rights.canEditConfig) { %>
+                <!-- This card'll go to config page -->
+                <div class="card">
+                    <img src="/img/icons/011-settings.svg" width="64px" height="64px" alt="Card image cap">
+                    <div class="card-body">
+                        <a href="/admin/config" class="btn btn-primary">Konfiguráció</a>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+<% }
+//RENDER THIS PART IF USER NEEDS TO LOG IN
+else { %>
+
+    <div class="loginForm">
+        <h3>Kérem jelentkezzen be!</h3>
+        <form action='/api/auth/login' method='POST' class="text-center">
+            <div class="form-group">
+                <input name='username' type="text" class="form-control" placeholder="felhasználónév">
+            </div>
+            <div class="form-group">
+                <input name='password' type="password" class="form-control" placeholder="jelszo">
+            </div>
+            <button type="submit" class="btn btn-primary">Belépés</button>
+        </form>
+        <!-- <small>Nincs fiókja? <a href='#'>Regisztráljon!</a></small> -->
+    </div>
+<% } %>
+
+
+<%- include('../partials/footer') %>

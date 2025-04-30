@@ -1,0 +1,85 @@
+<%- include('../partials/header') %>
+<%- include('../partials/adminNavbar') %>
+<!-- messagebar -->
+<%- include('../partials/messagebar') %>
+
+<div class="container">
+    <div class="row"><h1>Felhasználók</h1></div>
+    <div class="row">
+        <ul class="col-12 list-group" id="list">
+
+        </ul>
+    </div>
+    <% if(currentUser.rights.canInvite){ %>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="btn btn-sm btn-success editUser" data-toggle="modal" data-target="#invModal">Új felhasználó</button>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+
+
+<!-- Modal for editing users -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <ul class="col-12" id="rightList">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveUser">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal for adding new users -->
+<div class="modal fade" id="invModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Új felhasználó létrehozása!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <form method="post" action="/api/auth/register">
+                            <div class="col-12 d-felx flex-column">
+                                <label>Felhasználónév:</label>
+                                <input type="text" name="username" class="form-control" placeholder="sampleuser">
+                            </div>
+                            <div class="col-12 d-flex justify-content-center">
+                                <button id="sendInvite" class="btn btn-lg btn-success mt-1">Létrehoz</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
+
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="/api/js/users.js" type="text/javascript"></script>

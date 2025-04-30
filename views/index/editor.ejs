@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+
+<!-- Little navbar like thing -->
+<div class="d-flex flex-row">
+    <a href="/<%= page %>">Vissza</a>
+</div>
+
+<!-- editor -->
+<div class="container">
+    <div class="row">
+        <h1>Tartalom hozzáadása a(z) <%= page %> oldalhoz.</h1>
+    </div>
+    <div class="row d-flex flex-column">
+        <!-- ACTUAL CKEDITOR COMES HERE: -->
+        <textarea name="editor1" id="editor1">
+        <% if(content){ %>
+            <%= content.content %>
+         <% } else { %>
+            &lt;p&gt;Írd ide a tartalmat.&lt;/p&gt;
+        <% } %>
+        </textarea>
+         
+        <!-- Send content -->
+        <button class="btn btn-lg btn-success" id="send">Küldés</button>
+    </div>
+</div>
+
+<!-- ckeditor api -->
+<script src="/js/ckeditor/ckeditor.js"></script>
+<!-- this js file calls ckeditor -->
+<script type="text/javascript" src="/js/editor.js"></script>
+
+<%- include('../partials/footer') %>

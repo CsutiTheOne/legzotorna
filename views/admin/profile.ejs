@@ -1,0 +1,73 @@
+<%- include('../partials/header') %>
+<%- include('../partials/adminNavbar') %>
+<%- include('../partials/messagebar') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-3 text-center"><img src="/img/icons/013-user.svg" width="64px" height="64px" class="image-fluid rounded-circle"></h1>
+        </div>
+    </div>
+
+    <% if(currentUser && currentUser._id.equals(user._id)){ %>
+        <div class="row">
+            <div class="col-12">
+                <!-- so we need here: -->
+                <!-- username change -->
+                <div class="text-center">
+                    <span class="m-1"><img src="/img/icons/023-pencil.svg" width="32px" height="auto" alt=""></span><p class="display-4 d-inline editable" id="username" contenteditable></p>
+
+                </div>
+
+                <!-- email change -->
+                <div class="text-center">
+
+                    <span class="m-1"><img src="/img/icons/023-pencil.svg" width="32px" height="auto" alt=""></span><p class="display-4 d-inline editable" id="email" contenteditable></p>
+                    <div class="container bg-dark text-center p-3" style="display:none;">
+                        <button class="btn btn-md btn-danger">Mégse</button>
+                        <button class="btn btn-md btn-success">Mentés</button>
+                    </div>
+                </div>
+
+                <!-- í -->
+                <hr/>
+                <div class="text-center">
+                    <p class="">Jelszó csere</p>
+                    <div class="" id="passwordDiv" style="display:none;">
+                        <form class="d-flex flex-column align-items-center" id="passwordForm">
+                            <div class="form-group">
+                                <input type="password" name="old" class="form-control" placeholder="régi jelszó">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="new" class="form-control" placeholder="új jelszó">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="again" class="form-control" placeholder="új jelszó megerősítése">
+                            </div>
+                            <div class="text-center">
+                                <button type="subit" class="btn btn-md btn-info">Megváltoztatás</button>
+                            </div>
+                        </form>
+                    </div>
+                    <button type="button" class="btn btn-sm mt-1 btn-light showAndHide" data-target="#passwordDiv"><img src="/img/icons/027-next.svg" widrh="auto" height="16px" alt=">" style="transform:rotate(90deg);"></button>
+                </div>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="text-center">
+            <!-- username -->
+            <p class="display-4"><%= user.username %></p>
+        </div>
+        <!-- email -->
+        <div class="text-center">
+            <p class="display-4"><%= user.email %></p>
+        </div>
+    <% } %>
+</div>
+
+<%- include('../partials/footer') %>
+
+
+<% if(currentUser && currentUser._id.equals(user._id)){ %>
+        <script type="text/javascript" src="/js/profile.js"></script>
+<% } %>

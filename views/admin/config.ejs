@@ -1,0 +1,66 @@
+<%- include('../partials/header') %>
+<%- include('../partials/adminNavbar') %>
+<%- include('../partials/messagebar') %>
+
+<%
+    function renderConfig(obj, path){
+        //loop through keys and values of the object
+        //and becouse we render the thing, we'll need to return a DOM element
+        //I prefer a list
+        let el = '<ul class="list-group">';
+        Object.keys(obj).forEach(key => {
+            let cpath = path ? `${path}/${key}` : key;
+            //append list with a list item
+            el += '<li class="list-group-item d-flex flex-row align-items-start">';
+            //check typeof each key-value pair
+            let input = `<span class="font-underline">${key}:</span>`
+
+            switch(typeof obj[key]){
+                case 'string':
+                    //we need a regular input field
+                    input += `<input class="ml-2 form-control" data-path="${cpath}" type="string" value="${obj[key]}" placeholder="${key}">`;
+                    break;
+                case 'number':
+                    //almost thethe same as string but with number
+                    //(shouldn't be used too often)
+                    input += `<input class="ml-2 form-control" data-path="${cpath}" type="number" value="${obj[key]}">`;
+                    break;
+                case 'bool':
+                    //when it is a bool the input field should be a switch
+                    input += '<p>SWITCH COMES HERE</p>';
+                    break;
+                case 'object':
+                    //and that where thing get comlicated
+                    input += `<p>${key} subobject:</p>`
+                    input += renderConfig(obj[key], cpath);
+                    break;
+            }
+            el += input + '</li>';
+        });
+        //close & return DOM here
+        el += '</ul>';
+
+        return el;
+    }
+%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Configuration manager page</h1>
+        </div>
+    </div>
+    <div class="row">
+        <!-- config comes here -->
+        <div class="col-12">
+            <%- renderConfig(config) %>
+        </div>
+    </div>
+</div>
+
+
+
+<%- include('../partials/footer') %>
+<script type="text/javascript" src="/api/js/config.js">
+
+</script>

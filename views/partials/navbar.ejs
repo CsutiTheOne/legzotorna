@@ -1,0 +1,29 @@
+<nav class="navbar sticky-top navbar-expand-md navbar-light " style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="/fooldal">Légzőtorna</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/copd">Mi a COPD?</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/tapasztalatok">Tapasztalatok</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact">Kapcsolat</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/vasarlas">Vásárlás</a>
+            </li>
+        </ul>
+        <% if(currentUser){ %>
+            <div>
+                <a href="/admin" class="btn btn-md btn-info">admin</a>
+                <a href="/api/auth/logout" class="btn btn-md btn-light">Kijelentkezés</a>
+            </div>
+        <% } %>
+    </div>
+</nav>

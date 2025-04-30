@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<%- include('../partials/messagebar') %>
+
+<div class="container">
+
+    <% if(content && content.length > 0) { %>
+        <!--IN CASE EVERYTHING IS COOL-->
+        <% content.forEach((content) => { %>
+            <div class="row">
+                <div class="col-12">
+                    <%- content.content %>
+                </div>
+                <% if(currentUser && currentUser.rights.canEditContent) { %>
+                    <div class="col-12">
+                        <button class="btn btn-sm btn-danger contentDeleter" data-id="<%= content._id %>">Törlés</button>
+                        <a href="/<%= page %>/<%= content._id %>" class="btn btn-sm btn-warning">Szerkesztés</a>
+                    </div>
+                <% } %>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <!-- WHEN NOTHING IS COOL -->
+        <h1>404 Nincs ilyen oldal.</h1>
+    <% } %>
+    <% if(currentUser && currentUser.rights.canEditContent) { %>
+        <a href="/<%= page %>/new">+Tartalom hozzáadása!</a>
+    <% } %>
+</div>
+
+<%- include('../partials/footerbar') %>
+<%- include('../partials/footer') %>

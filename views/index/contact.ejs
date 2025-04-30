@@ -1,0 +1,59 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<%- include('../partials/messagebar') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-lg-4"></div>
+        <div class="col-12 col-md-8">
+            <ul class="contact-list">
+                <li>
+                    <img src="/img/icons/035-businessman.svg" width="32px" height="auto">
+                    <p>Honlap üzemeltetője: <span>Szabó Zsolt e.v.</span></p>
+                </li>
+                <li>
+                    <img src="/img/icons/022-email-1.svg" width="32px" height="auto">
+                    <p>Email: <span>szaboetyek@gmail.com</span></p>
+                </li>
+                <li>
+                    <img src="/img/icons/032-phone-receiver.svg" width="32px" height="auto">
+                    <p>Telefonszám: <span>+36 70 500 1809</span></p>
+                </li>
+                <li>
+                    <img src="/img/icons/034-headquarters.svg" width="32px" height="auto">
+                    <p>Székhely: <span>2091 Etyek, Horváth u. 70.</span></p>
+                </li>
+                <li>
+                    <img src="/img/icons/033-taxes.svg" width="32px" height="auto">
+                    <p>Adószám: <span>57105400-1-27</span></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12 text-center mt-5">
+            <h1>Kérdése van?</h1>
+            <form id='contactForm'>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="név" name="name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="tárgy" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="message" rows="5" placeholder="Írja ide az üzenetet..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-lg btn-info">Küldés</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footerbar') %>
+<%- include('../partials/footer') %>
