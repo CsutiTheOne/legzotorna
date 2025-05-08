@@ -1,3 +1,7 @@
+# Link
+https://legzotorna.onrender.com/fooldal
+
+
 # Legzotorna webalkamazás #
 
 Ez a régi legzotorna.hu-nak egy kicsit komplexebb, feljavítottabb, extra designolt verziója.
