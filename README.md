@@ -1,6 +1,7 @@
 # Link
 https://legzotorna.onrender.com/fooldal
 
+(Ha épp leállt, eltarthat egy ideig mire újraindul)
 
 # Legzotorna webalkamazás #
 
